@@ -23,4 +23,3 @@ To do :
 - Make forms more user friendly (dropdowns/checklist)
 - Introduce more .tex templates
 - Write more tests
-- Use Jinja2 templating to combine .tex files
