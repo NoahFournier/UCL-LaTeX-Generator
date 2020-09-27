@@ -14,8 +14,13 @@ def get_fields(request):
         if form.is_valid():
             # check data and pass into latex rendered
             # return downloaded .pdf
+            supervisor_bool = form.is_supervisor_needed()
             latex_renderer = LatexRenderer()
-            latex_renderer.compile_tex_to_pdf('title_page.tex', **form.cleaned_data)
+            if supervisor_bool:
+                template = 'title_page.tex'
+            else:
+                template = 'title_page_nosupervisor.tex'
+            latex_renderer.compile_tex_to_pdf(template, **form.cleaned_data)
             return HttpResponseRedirect('/download')
     else:
         form = FieldsForm()
