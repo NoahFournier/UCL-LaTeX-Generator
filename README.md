@@ -5,8 +5,10 @@
 - Git clone on local repo
 
 From parent folder, run : 
-- source pytex/env/bin/activate
-- python3 manage.py runserver
+- python -m venv .venv
+- source .venv/bin/activate
+- pip install -r requirements.txt
+- python manage.py runserver
 
 - Navigate to http://127.0.0.1:8000/
 
