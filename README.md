@@ -23,4 +23,4 @@ To do :
 - Make forms more user friendly (dropdowns/checklist)
 - Introduce more .tex templates
 - Write more tests
-- Timeout for LaTeX renderer
+- Use Jinja2 templating to combine .tex files

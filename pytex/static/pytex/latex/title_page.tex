@@ -42,7 +42,7 @@
 
 	%	Author(s)
 
-
+	\BLOCK{if supervisor_bool}
 	\begin{minipage}{0.4\textwidth}
 		\begin{flushleft}
 			\large
@@ -59,21 +59,24 @@
 		\end{flushright}
 	\end{minipage}
 
+	\BLOCK{else}
 	% If you don't want a supervisor, uncomment the two lines below and comment the code above
-	%{\large\textit{Author}}\\
-	%John \textsc{Smith} % Your name
+	{\large\textit{Author}}\\
+	\VAR{first_name} \textsc{\VAR{last_name}} % Your name
 
-
+	\BLOCK{endif}
 	%	Date
+	\BLOCK{if date}
 
+	\vfill\vfill\vfill % Position the date 3/4 down the remaining page
 
-	%\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	{\large\today} % Date, change the \today to a set date if you want to be precise
 
-%	{\large\today} % Date, change the \today to a set date if you want to be precise
+	\vfill\vfill
 
-%	\vfill\vfill
+	\vfill % Push the date up 1/4 of the remaining page
 
-	%\vfill % Push the date up 1/4 of the remaining page
+	\BLOCK{endif}
 
 \end{titlepage}
 \end{document}

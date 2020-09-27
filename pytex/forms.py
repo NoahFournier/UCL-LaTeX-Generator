@@ -24,6 +24,7 @@ class FieldsForm(forms.Form):
     )
     supervisor_first_name = forms.CharField(label='Supervisor First Name', max_length=100, required=False, empty_value='')
     supervisor_last_name = forms.CharField(label='Supervisor Last Name', max_length=100, required=False, empty_value='')
+    date = forms.BooleanField(label='Date')
     banner_color = forms.CharField(widget=forms.Select(choices=COLOUR_PAIRS),max_length=25)
 
     def clean_first_name(self):
