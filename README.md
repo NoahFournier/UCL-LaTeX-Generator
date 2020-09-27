@@ -18,9 +18,9 @@ From parent folder, run :
 
 To do :
 
-- Add code to destroy temp folders
 - Introduce more cleaning/validation in forms.py
 - Style page
 - Make forms more user friendly (dropdowns/checklist)
 - Introduce more .tex templates
-- Write tests
+- Write more tests
+- Timeout for LaTeX renderer

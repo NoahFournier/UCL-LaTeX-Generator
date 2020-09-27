@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.http import HttpResponse, Http404, HttpResponseRedirect, HttpResponseServerError
 from django.conf import settings
+
+from subprocess import TimeoutExpired
 
 import os
 
@@ -20,7 +22,14 @@ def get_fields(request):
                 template = 'title_page.tex'
             else:
                 template = 'title_page_nosupervisor.tex'
-            latex_renderer.compile_tex_to_pdf(template, **form.cleaned_data)
+            errs = latex_renderer.compile_tex_to_pdf(template, **form.cleaned_data)
+            if errs == TimeoutExpired:
+                return render(
+                    request, 
+                    'pytex/index.html',
+                    {'error_message': 'Request timed out.',
+                    'form': FieldsForm()}
+                )
             return HttpResponseRedirect('/download')
     else:
         form = FieldsForm()

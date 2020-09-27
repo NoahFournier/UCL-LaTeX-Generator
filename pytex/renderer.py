@@ -1,6 +1,6 @@
 import os
 import jinja2 
-from subprocess import Popen
+from subprocess import Popen, TimeoutExpired
 import tempfile
 import shutil
 import glob
@@ -37,7 +37,8 @@ class LatexRenderer():
     def compile_tex_to_pdf(self, filename, **fields):
         out_path = self.OUTPUT_DIR
         rendered_tex = self.render_tex(filename, **fields)
-        self.compile_template(rendered_tex, out_path)
+        errs = self.compile_template(rendered_tex, out_path)
+        return errs
 
     def compile_template(self, rendered_tex, output_path):
         tmp_dir = tempfile.mkdtemp(dir=self.BASE_DIR)
@@ -46,13 +47,17 @@ class LatexRenderer():
             outfile.write(rendered_tex)
         out_tmp_path = os.path.join(self.BASE_DIR, 'out.pdf')
         p = Popen(['pdflatex', '-jobname', 'out', in_tmp_path], cwd=self.BASE_DIR)
-        p.communicate()
+        try:
+            errs = p.communicate(timeout=15)[1]
+        except TimeoutExpired:
+            p.kill()
+            errs = TimeoutExpired
         shutil.copy(out_tmp_path, output_path)
         shutil.rmtree(tmp_dir)
+        return errs
     
     
 def destroy_output():
-    #add code for destroying temp folders
     for file in glob.glob('pytex/out.*'):
             try:
                 os.remove(file)
