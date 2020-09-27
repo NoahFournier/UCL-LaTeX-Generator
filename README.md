@@ -8,6 +8,10 @@ From parent folder, run :
 - python -m venv .venv
 - source .venv/bin/activate
 - pip install -r requirements.txt
+
+- Use this link to generate a secret key : https://djecrety.ir/
+- Copy secret key as a string into latex_generator/.env_template and rename file to .env
+- python manage.py migrate
 - python manage.py runserver
 
 - Navigate to http://127.0.0.1:8000/
