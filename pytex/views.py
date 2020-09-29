@@ -19,7 +19,7 @@ def get_fields(request):
             form.cleaned_data['supervisor_bool'] = form.is_supervisor_needed()
             latex_renderer = LatexRenderer()
             errs = latex_renderer.compile_tex_to_pdf('title_page.tex', **form.cleaned_data)
-            if errs == TimeoutExpired:
+            if errs:
                 return render(
                     request, 
                     'pytex/index.html',
