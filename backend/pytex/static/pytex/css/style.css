@@ -1,0 +1,18 @@
+header {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    position: sticky;
+    background-color: #383e46;
+}
+
+header h1 {
+    width: 200px;
+    object-fit: contain;
+}
+
+body {
+    background-color: purple;
+}
