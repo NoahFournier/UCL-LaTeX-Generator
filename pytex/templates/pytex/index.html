@@ -5,7 +5,7 @@
     <head>
        <meta charset='utf-8'>
        <title>Latex Generator</title>
-       <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+       <link rel="stylesheet" type="text/css" href="{% static 'pytex/css/style.css' %}">
     </head>
     <body>
         <header>
@@ -16,7 +16,7 @@
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
         <form action='' method='post'>
             {% csrf_token %}
-            {{ form }}
+            {{ form.as_p }}
             <input type='submit' value='Submit'>
         </form>
     </body>

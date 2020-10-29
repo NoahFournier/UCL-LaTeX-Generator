@@ -5,10 +5,5 @@ header {
     align-items: center;
     height: 100px;
     position: sticky;
-    background-color: #383e46;
-}
-
-header h1 {
-    width: 200px;
-    object-fit: contain;
+    background-color: lightpink;
 }
