@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+    {% load static %}
+    <head>
+       <meta charset='utf-8'>
+       <title>Latex Generator</title>
+       <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+       <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
+    </head>
+    <body>
+        <header>
+            <h1>
+                UCL Latex Generator
+            </h1>
+        </header>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <form action='' method='post'>
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="fieldWrapper">
+                    {{ field.errors }}
+                    {{ field.label_tag }} {{ field }}
+                </div>
+            {% endfor %}
+            <input type='submit' value='Submit'>
+        </form>
+    </body>
+</html>
