@@ -30,7 +30,7 @@ def get_fields(request):
     else:
         form = FieldsForm()
     
-    return render(request, 'pytex/index_text.html', {'form':form})
+    return render(request, 'pytex/index.html', {'form':form})
 
 def download(request):
     file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)),'output/out.pdf')

@@ -23,5 +23,4 @@ To do :
 - Make forms more user friendly (dropdowns/checklist)
 - Introduce more .tex templates
 - Write more tests
-- Add student number
 - Add sub-header at bottom of page
