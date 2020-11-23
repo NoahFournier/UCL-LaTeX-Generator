@@ -18,15 +18,14 @@ class FieldsForm(forms.Form):
     course_name = forms.CharField(label='Course name', max_length=200, required=False, empty_value='')
     module_name = forms.CharField(label='Module name', max_length=200, required=False, empty_value='')
     assignment_title = forms.CharField(label='Assignment Title', max_length=200)
-    supervisor_title = forms.CharField(
+    supervisor_title = forms.ChoiceField(
         label='Supervisor Title', #
-        max_length=5,
-        widget=forms.Select(choices=SUPERVISOR_TITLES)
+        choices=SUPERVISOR_TITLES
     )
     supervisor_first_name = forms.CharField(label='Supervisor First Name', max_length=100, required=False, empty_value='')
     supervisor_last_name = forms.CharField(label='Supervisor Last Name', max_length=100, required=False, empty_value='')
     date = forms.BooleanField(label='Date', required=False)
-    banner_color = forms.CharField(widget=forms.Select(choices=COLOUR_PAIRS),max_length=25)
+    banner_color = forms.ChoiceField(label="Banner Color", choices=COLOUR_PAIRS)
 
     def clean_first_name(self):
         data = clean_charfield(self.cleaned_data['first_name'], SPECIAL_CHARACTERS)
