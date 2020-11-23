@@ -18,7 +18,6 @@ From parent folder, run :
 
 To do :
 
-- Introduce more cleaning/validation in forms.py
 - Style page
 - Make forms more user friendly (dropdowns/checklist)
 - Introduce more .tex templates
